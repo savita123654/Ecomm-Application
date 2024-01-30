@@ -1,0 +1,23 @@
+.card {
+    &:hover {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    }
+
+    .imgWrap {
+        border-radius: 10px;
+        border: 1px solid #b6b6b6;
+        padding: 3px;
+    }
+}
+
+.customCard {
+    border: 1px solid #f5f1f1 !important;
+
+    .description {
+        max-width: 137px;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}

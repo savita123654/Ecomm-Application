@@ -1,0 +1,72 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid d-flex justify-content-between">
+        <a class="navbar-brand text-white" routerLink="/">Ecomm-App</a>
+        <div>
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <button class="btn btn-outline-light bg-white hover-shadow text-dark cartBtn" type="submit"
+                    (click)="goToCart()">
+                    <i class="bi-cart-fill me-1 text-dark  bg-white"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">
+                        {{cartCount}}</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<div class="bg-light py-2">
+    <div class="container px-4 my-3">
+        <div class="text-center text-dark">
+            <h1 class="display-4 fw-bolder">Shop Here</h1>
+
+        </div>
+    </div>
+</div>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
+            <div class="col-5 mb-4 " *ngFor="let product of pagedList">
+                <div class="card h-100 shadow-sm customCard p-2 rounded-4">
+                    <div class="row row-cols-2 gx-1">
+                        <div class="col-md-5 p-1 imgWrap">
+                            <img class="card-img-top border-1" height="150px" src="{{product.image}}" alt="..." />
+                        </div>
+
+                        <div class="card-body p-1 col-md-7 d-flex align-items-center">
+                            <div class="text-left">
+                                <h3 class="fw-bolder">{{product.title}}</h3>
+                                Price:{{product.price}}.
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mt-2" />
+                    <div
+                        class="card-footer p-1 pt-0 d-flex justify-content-between align-items-center border-top-0 bg-transparent">
+                        <div class="text-center description" matTooltip="{{product.description}}">
+                            {{product.description}}
+                        </div>
+                        <button class="btn btn-outline-dark mt-auto" (click)="addToCart(product)">Add
+                            to cart</button>
+                        <!-- <button class="btn btn-outline-dark mt-auto" *ngIf="addedItem">Added</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-paginator [length]="pageObj.totalElements" [showFirstLastButtons]="true" [pageSize]="pageObj.size"
+            [pageSizeOptions]="[5, 10, 25]" (page)="pageChanged($event)">
+        </mat-paginator>
+    </div>
+</section>
+
+<!-- Footer-->
+<footer class="py-2 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Ecomm-App 2023</p>
+    </div>
+</footer>
