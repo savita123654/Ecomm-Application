@@ -21,8 +21,22 @@ export class CartPageComponent {
     private router: Router,
     private http: HttpClient) { }
 
+  backTOHome() {
+    this.router.navigate(['/']);
+  }
 
-  removeTocart(id) { }
+  removeTocart(id) {
+    if (this.addedCartItems.length) {
+      this.addedCartItems.forEach((item, idx) => {
+        if (item.id == id) {
+          this.addedCartItems.splice(idx, 1);
+        }
+      })
+    }
+    localStorage.setItem("addedItems", JSON.stringify(this.addedCartItems));
+    this.getCartCount();
+    console.log(this.addedCartItems);
+  }
 
   addItems(type) {
     if (type == 'add' && this.customNum < 20) {

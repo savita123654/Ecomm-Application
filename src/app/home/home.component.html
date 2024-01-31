@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand text-white" routerLink="/">Ecomm-App</a>
+        <a class="navbar-brand text-dark" routerLink="/">Ecomm-App</a>
         <div>
             <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <button class="btn btn-outline-light bg-white hover-shadow text-dark cartBtn" type="submit"
+                <button class="btn btn-outline-dark bg-white hover-shadow text-dark cartBtn" type="submit"
                     (click)="goToCart()">
                     <i class="bi-cart-fill me-1 text-dark  bg-white"></i>
                     Cart
@@ -28,10 +28,10 @@
     </div>
 </div>
 <!-- Section-->
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
-            <div class="col-5 mb-4 " *ngFor="let product of pagedList">
+<section class="py-2">
+    <div class="container px-2 mt-5">
+        <div class="row gx-4 row-cols-2 row-cols-md-3 row-cols-xl-4">
+            <div class="col-5 mb-4 " *ngFor="let product of products; let index = index;">
                 <div class="card h-100 shadow-sm customCard p-2 rounded-4">
                     <div class="row row-cols-2 gx-1">
                         <div class="col-md-5 p-1 imgWrap">
@@ -51,16 +51,17 @@
                         <div class="text-center description" matTooltip="{{product.description}}">
                             {{product.description}}
                         </div>
-                        <button class="btn btn-outline-dark mt-auto" (click)="addToCart(product)">Add
+                        <button class="btn btn-outline-dark mt-auto" [disabled]="product.disabled"
+                            (click)="addToCart(product, index)">Add
                             to cart</button>
                         <!-- <button class="btn btn-outline-dark mt-auto" *ngIf="addedItem">Added</button> -->
                     </div>
                 </div>
             </div>
         </div>
-        <mat-paginator [length]="pageObj.totalElements" [showFirstLastButtons]="true" [pageSize]="pageObj.size"
+        <!-- <mat-paginator [length]="pageObj.totalElements" [showFirstLastButtons]="true" [pageSize]="pageObj.size"
             [pageSizeOptions]="[5, 10, 25]" (page)="pageChanged($event)">
-        </mat-paginator>
+        </mat-paginator> -->
     </div>
 </section>
 

@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid d-flex justify-content-between">
-        <a class="navbar-brand text-white" routerLink="/">Ecomm-App</a>
+        <a class="navbar-brand text-dark" routerLink="/">Ecomm-App</a>
         <div>
             <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <button class="btn btn-outline-light bg-white hover-shadow text-dark cartBtn" type="submit"
+                <button class="btn btn-outline-dark bg-white hover-shadow text-dark cartBtn" type="submit"
                     (click)="goToCart()">
                     <i class="bi-cart-fill me-1 text-dark  bg-white"></i>
                     Cart
@@ -20,18 +20,18 @@
     </div>
 </nav>
 <div class="bg-light py-2">
-    <div class="container px-4 my-3">
+    <div class="container px-4 my-2">
         <div class="text-center text-dark">
-            <h1 class="display-4 fw-bolder">Order Here</h1>
-
+            <button class="btn btn-outline-dark d-flex justify-content-start" (click)="backTOHome()">Back to
+                home</button>
         </div>
     </div>
 </div>
 <!-- Section-->
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4">
-            <div class="col-5 mb-4 " *ngFor="let product of addedCartItems">
+<section class="py-2">
+    <div class="container px-2 mt-5">
+        <div class="row gx-4 row-cols-2 row-cols-md-3 row-cols-xl-4">
+            <div class="col-5 mb-4 " *ngFor="let product of addedCartItems;let i = index;">
                 <div class="card h-100 shadow-sm customCard p-1 rounded-4">
                     <div class="row row-cols-2 gx-1">
                         <div class="col-md-5 p-1 imgWrap">
@@ -49,7 +49,7 @@
                     <div
                         class="card-footer p-1 pt-0 d-flex justify-content-between align-items-center border-top-0 bg-transparent">
 
-                        <a class="btn btn-outline-dark mt-auto" href="#" (click)="removeTocart(product)">Remove</a>
+                        <a class="btn btn-outline-dark mt-auto" (click)="removeTocart(product.id)">Remove</a>
                         <div class="w-50 d-flex  align-items-center mt-3">
                             <button class="btn btn-dark rounded-0" (click)="addItems('minus')">-</button>
                             <input class="w-100 inputValue" style="height: 38px;" type="text" name="customNum" #item
